@@ -29,7 +29,7 @@ public class GenreDaoSQLImpl implements GenreDao{
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) { // result set is iterator.
                 Genre genre = new Genre();
-                genre.setId(rs.getInt("game_id"));
+                genre.setId(rs.getInt("genre_id"));
                 genre.setGenreName(rs.getString("genre_name"));
                 rs.close();
                 return genre;

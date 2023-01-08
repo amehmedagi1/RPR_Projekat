@@ -32,8 +32,7 @@ public class GameDaoSQLImpl implements GameDao{
                 game.setId(rs.getInt("game_id"));
                 game.setGameTitle(rs.getString("team_name"));
                 game.setReleaseDate(rs.getDate("release_date"));
-                //Ovo treba pomocu getById in GenreSQLImpl klasi
-                //game.setGenre(rs.getInt("genre_id"));
+                game.setGenre(returnGenreForId(rs.getInt("genre_id")));
                 rs.close();
                 return game;
             } else {

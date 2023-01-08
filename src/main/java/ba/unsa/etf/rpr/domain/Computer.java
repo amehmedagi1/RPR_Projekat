@@ -8,6 +8,7 @@ public class Computer implements Idable{
     private String GPU;
     private int memory;
     private int RAM;
+    private Game game;
 
 
     public int getId() {
@@ -48,6 +49,14 @@ public class Computer implements Idable{
 
     public void setRAM(int RAM) {
         this.RAM = RAM;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     @Override
