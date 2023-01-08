@@ -1,4 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
-public class Idable {
+public interface Idable {
+
+    void setId(int id);
+
+    int getId();
+
 }

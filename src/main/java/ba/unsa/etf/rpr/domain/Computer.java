@@ -1,21 +1,14 @@
 package ba.unsa.etf.rpr.domain;
 
-public class Computer {
+import java.util.Objects;
+
+public class Computer implements Idable{
     private int id;
     private String CPU;
     private String GPU;
     private int memory;
     private int RAM;
 
-    public Computer(){};
-
-    public Computer(int id, String cpu, String gpu, int memory, int ram) {
-        this.id = id;
-        CPU = cpu;
-        GPU = gpu;
-        this.memory = memory;
-        RAM = ram;
-    }
 
     public int getId() {
         return id;
@@ -55,5 +48,29 @@ public class Computer {
 
     public void setRAM(int RAM) {
         this.RAM = RAM;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Computer computer = (Computer) o;
+        return id == computer.id && memory == computer.memory && RAM == computer.RAM && Objects.equals(CPU, computer.CPU) && Objects.equals(GPU, computer.GPU);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, CPU, GPU, memory, RAM);
+    }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "id=" + id +
+                ", CPU='" + CPU + '\'' +
+                ", GPU='" + GPU + '\'' +
+                ", memory=" + memory +
+                ", RAM=" + RAM +
+                '}';
     }
 }

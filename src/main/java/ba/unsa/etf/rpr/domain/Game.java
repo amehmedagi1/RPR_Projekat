@@ -1,20 +1,14 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.util.Date;
+import java.util.Objects;
 
-public class Game {
+public class Game implements Idable{
     private int id;
     private String gameTitle;
     private Date releaseDate;
+    private Genre genre;
 
-    public Game () {};
-
-
-    public Game(int id, String gameTitle, Date releaseDate) {
-        this.id = id;
-        this.gameTitle = gameTitle;
-        this.releaseDate = releaseDate;
-    }
 
     public int getId() {
         return id;
@@ -38,5 +32,27 @@ public class Game {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return id == game.id && Objects.equals(gameTitle, game.gameTitle) && Objects.equals(releaseDate, game.releaseDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", gameTitle='" + gameTitle + '\'' +
+                ", releaseDate=" + releaseDate +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, gameTitle, releaseDate);
     }
 }
