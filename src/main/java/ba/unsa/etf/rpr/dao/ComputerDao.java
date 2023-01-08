@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface ComputerDao extends Dao{
+import ba.unsa.etf.rpr.domain.Computer;
+
+public interface ComputerDao extends Dao<Computer>{
 }

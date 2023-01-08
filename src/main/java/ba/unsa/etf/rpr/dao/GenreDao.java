@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-public interface GenreDao extends Dao{
+import ba.unsa.etf.rpr.domain.Genre;
+
+public interface GenreDao extends Dao<Genre>{
 }
