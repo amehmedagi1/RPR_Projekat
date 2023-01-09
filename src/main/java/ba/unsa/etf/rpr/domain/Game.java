@@ -52,11 +52,7 @@ public class Game implements Idable{
 
     @Override
     public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", gameTitle='" + gameTitle + '\'' +
-                ", releaseDate=" + releaseDate +
-                '}';
+        return " | " + id + " | " + gameTitle + " | " + releaseDate;
     }
 
     @Override

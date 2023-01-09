@@ -14,7 +14,7 @@ public class GenreDaoSQLImpl implements GenreDao{
 
     public GenreDaoSQLImpl(){
         try {
-            query = "SELECT * FROM genres WHERE id = ?";
+            query = "SELECT * FROM genres WHERE genre_id = ?";
             this.connection = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_database for game specs", "freedb_amehmedagi1", "4w&vSbrf$e5gxDg");
         } catch (Exception e) {
             e.printStackTrace();

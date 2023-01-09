@@ -30,7 +30,7 @@ public class GameDaoSQLImpl implements GameDao{
             if (rs.next()) { // result set is iterator.
                 Game game = new Game();
                 game.setId(rs.getInt("game_id"));
-                game.setGameTitle(rs.getString("team_name"));
+                game.setGameTitle(rs.getString("game_title"));
                 game.setReleaseDate(rs.getDate("release_date"));
                 game.setGenre(returnGenreForId(rs.getInt("genre_id")));
                 rs.close();
@@ -98,7 +98,7 @@ public class GameDaoSQLImpl implements GameDao{
 
     @Override
     public List<Game> searchByGenre(Genre genre) {
-        String q = "SELECT * FROM teams WHERE confederation_id = ?";
+        String q = "SELECT * FROM games WHERE genre_id = ?";
         try {
             PreparedStatement stmt = this.connection.prepareStatement(q);
             stmt.setInt(1, genre.getId());
