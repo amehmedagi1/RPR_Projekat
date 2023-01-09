@@ -9,10 +9,10 @@ import java.util.List;
 public interface GameDao extends Dao<Game>{
 
     /**
-     * Returns all teams form specific genre.
+     * Returns all games form specific genre.
      *
-     * @param genre is given as specific genre
-     * @return list of teams
+     * @param genre is given as specific
+     * @return list of games
      */
     List<Game> searchByGenre(Genre genre);
 
