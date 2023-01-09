@@ -14,7 +14,7 @@ public class GameDaoSQLImpl implements GameDao{
 
     public GameDaoSQLImpl(){
         try {
-            query = "SELECT * FROM games WHERE id = ?";
+            query = "SELECT * FROM games WHERE game_id = ?";
             this.connection = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_database for game specs", "freedb_amehmedagi1", "4w&vSbrf$e5gxDg");
         } catch (Exception e) {
             e.printStackTrace();

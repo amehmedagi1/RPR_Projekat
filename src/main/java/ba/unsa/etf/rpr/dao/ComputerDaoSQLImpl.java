@@ -16,6 +16,7 @@ public class ComputerDaoSQLImpl implements ComputerDao{
     public ComputerDaoSQLImpl(){
         try {
             query = "SELECT * FROM computers WHERE id = ?";
+            Class.forName("com.mysql.jdbc.Driver");
             this.connection = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_database for game specs", "freedb_amehmedagi1", "4w&vSbrf$e5gxDg");
         } catch (Exception e) {
             e.printStackTrace();
