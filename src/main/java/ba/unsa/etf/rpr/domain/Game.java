@@ -8,7 +8,42 @@ public class Game implements Idable{
     private String gameTitle;
     private Date releaseDate;
     private Genre genre;
+    private String requiredCPU;
+    private String requiredGPU;
+    private int requiredMemory;
+    private int requiredRAM;
 
+    public String getRequiredCPU() {
+        return requiredCPU;
+    }
+
+    public void setRequiredCPU(String requiredCPU) {
+        this.requiredCPU = requiredCPU;
+    }
+
+    public String getRequiredGPU() {
+        return requiredGPU;
+    }
+
+    public void setRequiredGPU(String requiredGPU) {
+        this.requiredGPU = requiredGPU;
+    }
+
+    public int getRequiredMemory() {
+        return requiredMemory;
+    }
+
+    public void setRequiredMemory(int requiredMemory) {
+        this.requiredMemory = requiredMemory;
+    }
+
+    public int getRequiredRAM() {
+        return requiredRAM;
+    }
+
+    public void setRequiredRAM(int requiredRAM) {
+        this.requiredRAM = requiredRAM;
+    }
 
     public int getId() {
         return id;

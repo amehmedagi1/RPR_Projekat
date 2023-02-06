@@ -17,7 +17,7 @@ public class AppFX extends Application {
         fxmlLoader.setController(homeController);
         Parent root = fxmlLoader.load();
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setTitle("Home");
+        stage.setTitle("Game specs v1.0");
         stage.show();
     }
 }

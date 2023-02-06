@@ -5,24 +5,68 @@ import ba.unsa.etf.rpr.domain.Game;
 import ba.unsa.etf.rpr.domain.Genre;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public class ComputerDaoSQLImpl implements ComputerDao{
-    private Connection connection;
-    private String query;
+public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements ComputerDao{
 
-    public ComputerDaoSQLImpl(){
+
+    private static  ComputerDaoSQLImpl instance = null;
+    private ComputerDaoSQLImpl(){
+        super("computers");
+    }
+
+
+
+
+    public static ComputerDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new ComputerDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
+    }
+
+    @Override
+    public Computer row2object(ResultSet rs) {
         try {
-            query = "SELECT * FROM computers WHERE computer_id = ?";
-            Class.forName("com.mysql.jdbc.Driver");
-            this.connection = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_database for game specs", "freedb_amehmedagi1", "4w&vSbrf$e5gxDg");
-        } catch (Exception e) {
-            e.printStackTrace();
+            Computer computer = new Computer();
+            computer.setId(rs.getInt("id"));
+            computer.setCPU(rs.getString("CPU"));
+            computer.setGPU(rs.getString("GPU"));
+            computer.setMemory(rs.getInt("Memory"));
+            computer.setRAM(rs.getInt("RAM"));
+            //treba još za igrice ovdje
+            return computer;
+        } catch (SQLException e) {
+            return new Computer();
+            //treba bacati ovdje novokreirani izuzetak
         }
     }
 
+    @Override
+    public Map<String, Object> object2row(Computer object) {
+        Map<String, Object> row = new TreeMap<>();
+        row.put("id", object.getId());
+        row.put("CPU", object.getCPU());
+        row.put("GPU", object.getGPU());
+        row.put("Memory", object.getMemory());
+        row.put("RAM", object.getRAM());
+        //dodati jos game
+        return row;
+    }
+
+    @Override
+    public List<Computer> searchByComputerSpecification(Computer computer) {
+        String query = "SELECT * FROM computers WHERE CPU=?, GPU=?, Memory=?,RAM=?";
+        return executeQuery(query, new Object[]{computer.getCPU(), computer.getGPU(), computer.getMemory(), computer.getRAM()});
+    }
+
+
+
+/*
     @Override
     public Computer getById(int id) {
         try {
@@ -47,35 +91,39 @@ public class ComputerDaoSQLImpl implements ComputerDao{
         }
         return null;
     }
-
+*/
+    /*
     @Override
     public Computer add(Computer item) {
         return null;
     }
 
-
+*/
+    /*
     @Override
     public Computer update(Computer item) {
         return null;
     }
 
-
+*/
+    /*
     @Override
     public void delete(int id) {
         //I will do something here
     }
-
+*/
+    /*
     @Override
     public List<Computer> getAll() {
         return Collections.emptyList();
     }
-
+*/
     /**
      * @param id for searching computer
      * @return specific Computer for specific id from db
      * @author amehemdagi1
      */
-
+/*
     public Game returnGameForId(int id){
         try {
             PreparedStatement stmt = this.connection.prepareStatement(query);
@@ -94,7 +142,8 @@ public class ComputerDaoSQLImpl implements ComputerDao{
         }
         return null;
     }
-
+*/
+    /*
     public Genre returnGenreForId(int id){
         try {
             PreparedStatement stmt = this.connection.prepareStatement(query);
@@ -111,9 +160,9 @@ public class ComputerDaoSQLImpl implements ComputerDao{
         }
         return null;
     }
+*/
 
-
-
+/*
     public Computer returnComputerForId(int id){
         try {
             PreparedStatement stmt = this.connection.prepareStatement(query);
@@ -134,5 +183,5 @@ public class ComputerDaoSQLImpl implements ComputerDao{
         }
         return null;
     }
-
+*/
 }

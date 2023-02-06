@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.domain.Computer;
 import ba.unsa.etf.rpr.domain.Game;
 import ba.unsa.etf.rpr.domain.Genre;
 
@@ -14,6 +15,6 @@ public interface GameDao extends Dao<Game>{
      * @param genre is given as specific
      * @return list of games
      */
-    List<Game> searchByGenre(Genre genre);
-
+    List<Game> searchByGenreName(Genre genre);
+    List<Game> searchByComputer(Computer computer);
 }

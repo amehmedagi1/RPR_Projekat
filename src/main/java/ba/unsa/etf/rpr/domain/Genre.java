@@ -32,10 +32,7 @@ public class Genre implements Idable{
 
     @Override
     public String toString() {
-        return "Genre{" +
-                "id=" + id +
-                ", genreName='" + genreName + '\'' +
-                '}';
+        return genreName;
     }
 
     @Override
