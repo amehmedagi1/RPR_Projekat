@@ -42,22 +42,22 @@
             <Insets left="5.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="fldCpu" editable="false" GridPane.columnIndex="1">
+      <TextField fx:id="fieldCpu" editable="false" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="fldGpu" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="fieldGpu" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="fldHdd" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="fieldHdd" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="fldRam" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="fieldRam" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>

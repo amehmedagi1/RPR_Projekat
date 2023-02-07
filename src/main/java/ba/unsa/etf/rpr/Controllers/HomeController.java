@@ -55,12 +55,7 @@ public class HomeController {
     }
 
     public void onActionCheck(ActionEvent actionEvent) {
-        System.out.println("Da li otvori");
-        try {
-            openDialog("Check game page","/fxml/check-layout.fxml", new CheckController());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        openDialog("Check dialog", "/fxml/check-layout.fxml", new CheckController());
 
     }
 
