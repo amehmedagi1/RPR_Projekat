@@ -101,13 +101,9 @@ public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements Compute
         return null;
     }
 */
-    /*
-    @Override
-    public Computer add(Computer item) {
-        return null;
-    }
 
-*/
+
+
     /*
     @Override
     public Computer update(Computer item) {

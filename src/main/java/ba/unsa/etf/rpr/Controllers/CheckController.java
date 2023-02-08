@@ -46,7 +46,7 @@ public class CheckController {
         computer.setGPU(fldGpu.getText());
         computer.setRAM(Integer.parseInt(fldRam.getText()));
         computer.setMemory(Integer.parseInt(fldHdd.getText()));
-        computer.setGameID(0);
+        computer.setGameID(2);
         ArrayList<Computer> listOfComputers = new ArrayList<>(DaoFactory.computerDao().searchByComputerSpecification(computer));
         if(listOfComputers.size() == 0) {
             computer.setId(DaoFactory.computerDao().getAll().size()+1);
