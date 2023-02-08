@@ -2,6 +2,9 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * The type Genre.
+ */
 public class Genre implements Idable{
     private int id;
     private String genreName;
@@ -14,10 +17,20 @@ public class Genre implements Idable{
         this.id = id;
     }
 
+    /**
+     * Gets genre name.
+     *
+     * @return the genre name
+     */
     public String getGenreName() {
         return genreName;
     }
 
+    /**
+     * Sets genre name.
+     *
+     * @param genreName the genre name
+     */
     public void setGenreName(String genreName) {
         this.genreName = genreName;
     }

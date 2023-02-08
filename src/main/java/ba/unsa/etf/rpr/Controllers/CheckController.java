@@ -6,14 +6,40 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * The type Check controller.
+ */
 public class CheckController {
 
+    /**
+     * The Fld ram.
+     */
     public TextField fldRam;
+    /**
+     * The Fld hdd.
+     */
     public TextField fldHdd;
+    /**
+     * The Fld cpu.
+     */
     public TextField fldCpu;
+    /**
+     * The Fld gpu.
+     */
     public TextField fldGpu;
+
+    /**
+     * Instantiates a new Check controller.
+     */
     public CheckController() {}
+
+    /**
+     * On action submit.
+     *
+     * @param actionEvent the action event
+     */
     public void onActionSubmit(ActionEvent actionEvent) {
         Computer computer = new Computer();
         computer.setCPU(fldCpu.getText());
@@ -23,7 +49,6 @@ public class CheckController {
         ArrayList<Computer> listOfComputers = new ArrayList<>(DaoFactory.computerDao().searchByComputerSpecification(computer));
         if(listOfComputers.size() == 0) {
             DaoFactory.computerDao().add(computer);
-            System.out.println("Kompjuter dodan");
         }else {
             System.out.println("Nema nista");
         }

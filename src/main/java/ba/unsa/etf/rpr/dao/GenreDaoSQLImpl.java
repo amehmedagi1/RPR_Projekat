@@ -6,9 +6,15 @@ import ba.unsa.etf.rpr.domain.Genre;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * The type Genre dao sql.
+ */
 public class GenreDaoSQLImpl extends AbstractDao<Genre> implements GenreDao{
     private static  GenreDaoSQLImpl genreDaoSQL = null;
 
+    /**
+     * Instantiates a new Genre dao sql.
+     */
     public GenreDaoSQLImpl(){
         super("genres");
 //        try {
@@ -19,6 +25,11 @@ public class GenreDaoSQLImpl extends AbstractDao<Genre> implements GenreDao{
 //        }
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static GenreDaoSQLImpl getInstance() {
         if(genreDaoSQL == null) {
             genreDaoSQL = new GenreDaoSQLImpl();
@@ -26,6 +37,9 @@ public class GenreDaoSQLImpl extends AbstractDao<Genre> implements GenreDao{
         return genreDaoSQL;
     }
 
+    /**
+     * Remove genre dao sql.
+     */
     public static void removeGenreDaoSQL() {
         genreDaoSQL = null;
     }

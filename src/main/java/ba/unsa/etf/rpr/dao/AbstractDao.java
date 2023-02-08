@@ -5,10 +5,20 @@ import ba.unsa.etf.rpr.domain.Idable;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * The type Abstract dao.
+ *
+ * @param <T> the type parameter
+ */
 public abstract class AbstractDao<T extends Idable> implements Dao<T> {
     private static Connection connection = null;
     private String tableName;
 
+    /**
+     * Instantiates a new Abstract dao.
+     *
+     * @param tableName the table name
+     */
     public AbstractDao(String tableName) {
         this.tableName = tableName;
         createConnection();
@@ -40,6 +50,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }
     }
 
+    /**
+     * Gets connection.
+     *
+     * @return the connection
+     */
     public static Connection getConnection() {
         return AbstractDao.connection;
     }
@@ -169,7 +184,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
      *
      * @param query  - query that returns single record
      * @param params - list of params for sql query
-     * @return Object
+     * @return Object t
      */
     public T executeQueryUnique(String query, Object[] params) {
         List<T> result = executeQuery(query, params);

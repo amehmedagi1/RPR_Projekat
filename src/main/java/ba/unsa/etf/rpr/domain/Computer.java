@@ -2,6 +2,9 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * The type Computer.
+ */
 public class Computer implements Idable{
     private int id;
     private String CPU;
@@ -19,42 +22,92 @@ public class Computer implements Idable{
         this.id = id;
     }
 
+    /**
+     * Gets cpu.
+     *
+     * @return the cpu
+     */
     public String getCPU() {
         return CPU;
     }
 
+    /**
+     * Sets cpu.
+     *
+     * @param CPU the cpu
+     */
     public void setCPU(String CPU) {
         this.CPU = CPU;
     }
 
+    /**
+     * Gets gpu.
+     *
+     * @return the gpu
+     */
     public String getGPU() {
         return GPU;
     }
 
+    /**
+     * Sets gpu.
+     *
+     * @param GPU the gpu
+     */
     public void setGPU(String GPU) {
         this.GPU = GPU;
     }
 
+    /**
+     * Gets memory.
+     *
+     * @return the memory
+     */
     public int getMemory() {
         return memory;
     }
 
+    /**
+     * Sets memory.
+     *
+     * @param memory the memory
+     */
     public void setMemory(int memory) {
         this.memory = memory;
     }
 
+    /**
+     * Gets ram.
+     *
+     * @return the ram
+     */
     public int getRAM() {
         return RAM;
     }
 
+    /**
+     * Sets ram.
+     *
+     * @param RAM the ram
+     */
     public void setRAM(int RAM) {
         this.RAM = RAM;
     }
 
+    /**
+     * Gets game.
+     *
+     * @return the game
+     */
     public Game getGame() {
         return game;
     }
 
+    /**
+     * Sets game.
+     *
+     * @param game the game
+     */
     public void setGame(Game game) {
         this.game = game;
     }

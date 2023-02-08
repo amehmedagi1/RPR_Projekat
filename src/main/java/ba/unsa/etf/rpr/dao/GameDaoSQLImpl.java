@@ -7,10 +7,16 @@ import ba.unsa.etf.rpr.domain.Genre;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * The type Game dao sql.
+ */
 public class GameDaoSQLImpl extends AbstractDao<Game> implements GameDao{
     private static GameDaoSQLImpl gameDaoSQL = null;
     private String query;
 
+    /**
+     * Instantiates a new Game dao sql.
+     */
     public GameDaoSQLImpl(){
         super("games");
 
@@ -22,6 +28,11 @@ public class GameDaoSQLImpl extends AbstractDao<Game> implements GameDao{
 //        }
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static GameDaoSQLImpl getInstance() {
         if(gameDaoSQL == null) {
             gameDaoSQL = new GameDaoSQLImpl();
@@ -29,6 +40,9 @@ public class GameDaoSQLImpl extends AbstractDao<Game> implements GameDao{
         return gameDaoSQL;
     }
 
+    /**
+     * Remove game dao sql.
+     */
     public static void removeGameDaoSql() {
         gameDaoSQL = null;
     }
@@ -148,7 +162,7 @@ public class GameDaoSQLImpl extends AbstractDao<Game> implements GameDao{
 //            PreparedStatement stmt = this.connection.prepareStatement(q);
 //            stmt.setInt(1, genre.getId());
 //            ResultSet rs = stmt.executeQuery();
-//            ArrayList<Game> teamLista = new ArrayList<>();
+//            ArrayList<Game> gameLista = new ArrayList<>();
 //            while (rs.next()) {
 //                Game g = new Game();
 //                g.setId(rs.getInt(1));
@@ -168,6 +182,10 @@ public class GameDaoSQLImpl extends AbstractDao<Game> implements GameDao{
     public List<Game> searchByComputer(Computer computer) {
 
         return null;
+    }
+
+    public List<Game> getGamesWithGenreId(Genre genre){
+        return executeQuery("SELECT * FROM games WHERE genre_id = ?", new Object[]{genre.getId()});
     }
 
 }

@@ -6,16 +6,40 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * The type Requirements controller.
+ */
 public class RequirementsController {
     private Game gameForDisplay;
+    /**
+     * The Field ram.
+     */
     public TextField fieldRam;
+    /**
+     * The Field hdd.
+     */
     public TextField fieldHdd;
+    /**
+     * The Field cpu.
+     */
     public TextField fieldCpu;
+    /**
+     * The Field gpu.
+     */
     public TextField fieldGpu;
 
+    /**
+     * Instantiates a new Requirements controller.
+     *
+     * @param game the game
+     */
     public RequirementsController(Game game) {
         gameForDisplay = game;
     }
+
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize() {
         fieldRam.setText(String.valueOf(gameForDisplay.getRequiredRAM()));
@@ -24,6 +48,11 @@ public class RequirementsController {
         fieldCpu.setText(String.valueOf(gameForDisplay.getRequiredCPU()));
     }
 
+    /**
+     * On action close.
+     *
+     * @param actionEvent the action event
+     */
     public void onActionClose(ActionEvent actionEvent) {
         Stage s = (Stage) fieldCpu.getScene().getWindow();
         s.close();

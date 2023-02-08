@@ -1,12 +1,13 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Computer;
-import ba.unsa.etf.rpr.domain.Game;
-import ba.unsa.etf.rpr.domain.Genre;
 
 import java.sql.*;
 import java.util.*;
 
+/**
+ * The type Computer dao sql.
+ */
 public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements ComputerDao{
 
 
@@ -16,14 +17,20 @@ public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements Compute
     }
 
 
-
-
+    /**
+     * Get instance computer dao sql.
+     *
+     * @return the computer dao sql
+     */
     public static ComputerDaoSQLImpl getInstance(){
         if(instance==null)
             instance = new ComputerDaoSQLImpl();
         return instance;
     }
 
+    /**
+     * Remove instance.
+     */
     public static void removeInstance(){
         if(instance!=null)
             instance=null;
@@ -63,6 +70,8 @@ public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements Compute
         String query = "SELECT * FROM computers WHERE CPU=?, GPU=?, Memory=?,RAM=?";
         return executeQuery(query, new Object[]{computer.getCPU(), computer.getGPU(), computer.getMemory(), computer.getRAM()});
     }
+
+
 
 
 
