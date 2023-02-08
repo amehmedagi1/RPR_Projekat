@@ -65,6 +65,12 @@ public class ComputerManager {
         DaoFactory.computerDao().delete(id);
     }
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     * @throws GameExcpetion the game excpetion
+     */
     public List<Computer> getAll() throws GameExcpetion{
         return DaoFactory.computerDao().getAll();
     }

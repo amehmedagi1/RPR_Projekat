@@ -61,7 +61,7 @@ public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements Compute
         row.put("GPU", object.getGPU());
         row.put("Memory", object.getMemory());
         row.put("RAM", object.getRAM());
-        //dodati jos game
+        row.put("game_id", object.getGameId());
         return row;
     }
 

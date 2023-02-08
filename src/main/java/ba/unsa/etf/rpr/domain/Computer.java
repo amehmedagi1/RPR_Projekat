@@ -11,7 +11,7 @@ public class Computer implements Idable{
     private String GPU;
     private int memory;
     private int RAM;
-    private Game game;
+    private int gameID;
 
 
     public int getId() {
@@ -99,17 +99,17 @@ public class Computer implements Idable{
      *
      * @return the game
      */
-    public Game getGame() {
-        return game;
+    public int getGameId() {
+        return gameID;
     }
 
     /**
      * Sets game.
      *
-     * @param game the game
+     * @param gameID the game id
      */
-    public void setGame(Game game) {
-        this.game = game;
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
     }
 
     @Override
