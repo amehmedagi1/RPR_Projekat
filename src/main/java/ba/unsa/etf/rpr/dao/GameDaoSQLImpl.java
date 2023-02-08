@@ -188,4 +188,5 @@ public class GameDaoSQLImpl extends AbstractDao<Game> implements GameDao{
         return executeQuery("SELECT * FROM games WHERE genre_id = ?", new Object[]{genre.getId()});
     }
 
+
 }

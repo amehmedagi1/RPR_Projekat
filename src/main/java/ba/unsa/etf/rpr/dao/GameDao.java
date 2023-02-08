@@ -35,4 +35,5 @@ public interface GameDao extends Dao<Game>{
      * @return the games with genre id
      */
     List<Game> getGamesWithGenreId(Genre genre);
+
 }
