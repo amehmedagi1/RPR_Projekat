@@ -102,6 +102,11 @@ public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements Compute
     }
 */
 
+    public Computer add(Computer computer){
+        String s = "INSERT INTO computers(id, CPU, GPU, Memory, RAM; game_id) VALUES (?,?,?,?,?,?)";
+        executeQuery(s, new Object[]{this.getAll().size()+1, computer.getCPU(), computer.getGPU(), computer.getMemory(), computer.getRAM(), 1});
+        return computer;
+    }
 
 
     /*

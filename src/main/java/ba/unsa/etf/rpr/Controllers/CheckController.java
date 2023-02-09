@@ -57,16 +57,17 @@ public class CheckController {
         computer.setGameID(2);
         ArrayList<Computer> listOfComputers = new ArrayList<>(DaoFactory.computerDao().searchByComputerSpecification(computer));
         if(listOfComputers.size() == 0) {
-            computer.setId(DaoFactory.computerDao().getAll().size()+1);
+           // computer.setId(DaoFactory.computerDao().getAll().size()+1);
             DaoFactory.computerDao().add(computer);
         }else {
             System.out.println("Nema nista");
         }
-        ArrayList<Game> games = new ArrayList<>(DaoFactory.gameDao().getAll());
+        System.out.println(computer);
+        /*ArrayList<Game> games = new ArrayList<>(DaoFactory.gameDao().getAll());
         for(int i = 0; i < games.size(); i++){
             if(computer.getCPU().equals(games.get(i).getRequiredCPU()) && computer.getRAM() >= games.get(i).getRequiredRAM() && computer.getGPU().equals(games.get(i).getRequiredGPU()) && computer.getMemory() >= games.get(i).getRequiredMemory())
                 System.out.println(games.get(i).toString());
-        }
+        }*/
     }
 
     public void openDialog(String title, String fxml, Object controller) {
