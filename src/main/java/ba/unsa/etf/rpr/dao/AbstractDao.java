@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.Exceptions.GameException;
 import ba.unsa.etf.rpr.domain.Idable;
 
 import java.sql.*;
@@ -120,8 +121,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
             return item;
         } catch (SQLException e) {
-            //trebalo bi bacati novokreirani izuzetak, umjesto ovog return item
-            return item;
+            throw new GameException(e.getMessage());
         }
     }
 
@@ -175,7 +175,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             return resultList;
         } catch (SQLException e) {
             //trebalo bi bacati novokreirani izuzetak, umjesto ovog return Collections.emptyList();
-            return Collections.emptyList();
+            throw new GameException(e.getMessage());
         }
     }
 
