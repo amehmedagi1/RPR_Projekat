@@ -15,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.sql.Date;
@@ -60,6 +61,7 @@ public class HomeController {
      */
     @FXML
     public void initialize() {
+
         titleColumn.setCellValueFactory(new PropertyValueFactory<Game, String>("gameTitle"));
         releaseDate.setCellValueFactory(new PropertyValueFactory<Game, Date>("releaseDate"));
         lvGenres.setItems(genres);
@@ -111,6 +113,7 @@ public class HomeController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setTitle(title);
+            stage.getIcons().add(new Image("/ICONS/creeper.png"));
             stage.show();
         }catch (Exception e) {
             System.out.println(e.getMessage());

@@ -4,7 +4,10 @@ import ba.unsa.etf.rpr.domain.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 /**
  * The type Requirements controller.
@@ -41,7 +44,7 @@ public class RequirementsController {
      * Initialize.
      */
     @FXML
-    public void initialize() {
+    public void initialize(){
         fieldRam.setText(String.valueOf(gameForDisplay.getRequiredRAM()));
         fieldHdd.setText(String.valueOf(gameForDisplay.getRequiredMemory()));
         fieldGpu.setText(String.valueOf(gameForDisplay.getRequiredGPU()));

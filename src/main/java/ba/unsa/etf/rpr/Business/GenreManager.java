@@ -1,8 +1,7 @@
 package ba.unsa.etf.rpr.Business;
 
-import ba.unsa.etf.rpr.Exceptions.GameExcpetion;
+import ba.unsa.etf.rpr.Exceptions.GameException;
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.domain.Game;
 import ba.unsa.etf.rpr.domain.Genre;
 
 import java.util.List;
@@ -16,9 +15,9 @@ public class GenreManager {
      *
      * @param genre the genre
      * @return the genre
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public Genre add(Genre genre) throws GameExcpetion {
+    public Genre add(Genre genre) throws GameException {
         return DaoFactory.genreDao().add(genre);
     }
 
@@ -26,9 +25,9 @@ public class GenreManager {
      * Update.
      *
      * @param genre the genre
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public void update(Genre genre) throws GameExcpetion{
+    public void update(Genre genre) throws GameException {
         DaoFactory.genreDao().update(genre);
     }
 
@@ -36,9 +35,9 @@ public class GenreManager {
      * Delete.
      *
      * @param id the id
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public void delete(int id) throws GameExcpetion{
+    public void delete(int id) throws GameException {
         DaoFactory.genreDao().delete(id);
     }
 
@@ -46,9 +45,9 @@ public class GenreManager {
      * Gets all.
      *
      * @return the all
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public List<Genre> getAll() throws GameExcpetion{
+    public List<Genre> getAll() throws GameException {
         return DaoFactory.genreDao().getAll();
     }
 }

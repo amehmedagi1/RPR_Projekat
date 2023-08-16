@@ -1,14 +1,11 @@
 package ba.unsa.etf.rpr.Business;
 
-import ba.unsa.etf.rpr.Exceptions.GameExcpetion;
+import ba.unsa.etf.rpr.Exceptions.GameException;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Computer;
-import ba.unsa.etf.rpr.domain.Game;
 import javafx.scene.control.Alert;
 
 import java.util.List;
-
-import static ba.unsa.etf.rpr.dao.DaoFactory.computerDao;
 
 /**
  * The type Computer manager.
@@ -19,9 +16,9 @@ public class ComputerManager {
      *
      * @param computer the computer
      * @return the computer
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public Computer add(Computer computer) throws GameExcpetion{
+    public Computer add(Computer computer) throws GameException {
        return DaoFactory.computerDao().add(computer);
     }
 
@@ -35,7 +32,7 @@ public class ComputerManager {
         try {
             List<Computer> computers = DaoFactory.computerDao().searchByComputerSpecification(computer);
             return computers.get(0);
-        }catch(GameExcpetion g) {
+        }catch(GameException g) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("You can't add computer to databse");
             alert.setHeaderText("Database error occured");
@@ -49,9 +46,9 @@ public class ComputerManager {
      * Update.
      *
      * @param computer the computer
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public void update(Computer computer) throws GameExcpetion{
+    public void update(Computer computer) throws GameException {
         DaoFactory.computerDao().update(computer);
     }
 
@@ -59,9 +56,9 @@ public class ComputerManager {
      * Delete.
      *
      * @param id the id
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public void delete(int id) throws GameExcpetion{
+    public void delete(int id) throws GameException {
         DaoFactory.computerDao().delete(id);
     }
 
@@ -69,9 +66,9 @@ public class ComputerManager {
      * Gets all.
      *
      * @return the all
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public List<Computer> getAll() throws GameExcpetion{
+    public List<Computer> getAll() throws GameException {
         return DaoFactory.computerDao().getAll();
     }
 }

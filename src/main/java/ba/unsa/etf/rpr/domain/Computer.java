@@ -117,7 +117,7 @@ public class Computer implements Idable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Computer computer = (Computer) o;
-        return id == computer.id && memory == computer.memory && RAM == computer.RAM && Objects.equals(CPU, computer.CPU) && Objects.equals(GPU, computer.GPU);
+        return id == computer.id && memory == computer.memory && RAM == computer.RAM && Objects.equals(CPU.toLowerCase(), computer.CPU.toLowerCase()) && Objects.equals(GPU.toLowerCase(), computer.GPU.toLowerCase());
     }
 
     @Override

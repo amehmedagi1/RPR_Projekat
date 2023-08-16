@@ -10,10 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.io.DataOutput;
 import java.util.ArrayList;
-import java.util.List;
+import javafx.scene.image.Image;
+
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -67,14 +66,15 @@ public class CheckController {
         ArrayList<Game> compatibleGames = new ArrayList<>();
         boolean printed = false;
         for(int i = 0; i < games.size(); i++){
-            if(computer.getCPU().equals(games.get(i).getRequiredCPU()) && computer.getRAM() >= games.get(i).getRequiredRAM() && computer.getGPU().equals(games.get(i).getRequiredGPU()) && computer.getMemory() >= games.get(i).getRequiredMemory())
+            if(computer.getCPU().toLowerCase().equals(games.get(i).getRequiredCPU().toLowerCase()) && computer.getRAM() >= games.get(i).getRequiredRAM() && computer.getGPU().toLowerCase().equals(games.get(i).getRequiredGPU().toLowerCase()) && computer.getMemory() >= games.get(i).getRequiredMemory())
             {
                 compatibleGames.add(games.get(i));
                 printed = true;
 
             }
             else if(i == games.size()-1 && printed==false) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
                 alert.setTitle("NO GAMES FOUND");
                 alert.setHeaderText("Warning!");
                 alert.setContentText("No games were found for your specifications");
@@ -83,6 +83,7 @@ public class CheckController {
         }
         if(printed == true){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
             alert.setTitle("Compatible games");
             alert.setHeaderText("We found the games your pc can run");
             alert.setContentText("Games your pc can run are:");
@@ -104,6 +105,7 @@ public class CheckController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setTitle(title);
+            stage.getIcons().add(new Image("/ICONS/creeper.png"));
             stage.show();
         }catch (Exception e) {
             System.out.println(e.getMessage());

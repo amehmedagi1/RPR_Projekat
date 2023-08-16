@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.Business;
 
-import ba.unsa.etf.rpr.Exceptions.GameExcpetion;
+import ba.unsa.etf.rpr.Exceptions.GameException;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Game;
 import ba.unsa.etf.rpr.domain.Genre;
@@ -18,9 +18,9 @@ public class GameManager {
      *
      * @param game the game
      * @return the game
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public Game add(Game game) throws GameExcpetion {
+    public Game add(Game game) throws GameException {
         return DaoFactory.gameDao().add(game);
     }
 
@@ -28,9 +28,9 @@ public class GameManager {
      * Update.
      *
      * @param game the game
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public void update(Game game) throws GameExcpetion {
+    public void update(Game game) throws GameException {
         DaoFactory.gameDao().update(game);
     }
 
@@ -38,9 +38,9 @@ public class GameManager {
      * Delete.
      *
      * @param id the id
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public void delete(int id) throws GameExcpetion {
+    public void delete(int id) throws GameException {
         DaoFactory.gameDao().delete(id);
     }
 
@@ -48,9 +48,9 @@ public class GameManager {
      * Gets all.
      *
      * @return the all
-     * @throws GameExcpetion the game excpetion
+     * @throws GameException the game excpetion
      */
-    public List<Game> getAll() throws GameExcpetion {
+    public List<Game> getAll() throws GameException {
         return DaoFactory.gameDao().getAll();
     }
 
@@ -64,7 +64,7 @@ public class GameManager {
         try {
             List<Game> games = DaoFactory.gameDao().searchByGenreName(genre);
             return games;
-        } catch (GameExcpetion g) {
+        } catch (GameException g) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("You can't add games to databse");
             alert.setHeaderText("Database error occured");
