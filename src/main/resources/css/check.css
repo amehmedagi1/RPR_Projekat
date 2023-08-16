@@ -1,0 +1,10 @@
+#btnSubmit{
+-fx-background-color : lightskyblue;
+}
+Label{
+-fx-background-color : red;
+}
+GridPane{
+-fx-background-color : grey;
+-fx-background-image : url("/ICONS/creeper.png");
+}

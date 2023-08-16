@@ -9,7 +9,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<?import java.net.URL?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="382.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+    <stylesheets>
+        <URL value="@/css/check.css" />
+    </stylesheets>
+
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="363.0000366210937" minWidth="10.0" prefWidth="144.79998779296875" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="386.39996337890625" minWidth="10.0" prefWidth="236.80001220703127" />
