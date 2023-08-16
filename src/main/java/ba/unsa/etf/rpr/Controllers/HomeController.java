@@ -8,12 +8,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.AccessibleAction;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -66,12 +64,13 @@ public class HomeController {
         releaseDate.setCellValueFactory(new PropertyValueFactory<Game, Date>("releaseDate"));
         lvGenres.setItems(genres);
         lvGenres.getSelectionModel().selectFirst();
+        games.addAll(DaoFactory.gameDao().getGamesWithGenreId(lvGenres.getSelectionModel().getSelectedItem()));
+        tvGames.setItems(games);
 
         lvGenres.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
             tvGames.getItems().clear();
             games.clear();
             games.addAll(DaoFactory.gameDao().getGamesWithGenreId(lvGenres.getSelectionModel().getSelectedItem()));
-            System.out.println(games);
             tvGames.setItems(games);
         });
 
@@ -97,7 +96,19 @@ public class HomeController {
 
     }
 
+    public void onActionClose(ActionEvent actionEvent){
+        Stage s = (Stage) lvGenres.getScene().getWindow();
+        s.close();
+    }
 
+    public void onActionAbout(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
+        alert.setTitle("About");
+        alert.setHeaderText("About app");
+        alert.setContentText("Created by: Admir Mehmedagic");
+        alert.showAndWait();
+    }
     /**
      * Open dialog.
      *

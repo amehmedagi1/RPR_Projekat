@@ -1,3 +1,13 @@
 Button{
 -fx-background-color : lightskyblue;
 }
+
+.list-cell { -fx-text-fill: black; }
+.list-cell:odd { -fx-background-color: white;}
+.list-cell:even { -fx-background-color: #8f8; }
+.list-cell:focused{-fx-background-color: lightskyblue}
+.table-row-cell{ -fx-text-fill: black; }
+.table-row-cell:even{ -fx-background-color: white;}
+.table-row-cell:odd{ -fx-background-color: #8f8; }
+.table-row-cell:selected {-fx-background-color: lightskyblue;}
+.table-column{ -fx-border-color: black}
