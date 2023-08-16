@@ -1,10 +1,11 @@
 #btnSubmit{
 -fx-background-color : lightskyblue;
 }
-Label{
--fx-background-color : red;
+.root{
+-fx-background-image : url("/ICONS/mario.jpg");
+-fx-background-size : cover
 }
-GridPane{
--fx-background-color : grey;
--fx-background-image : url("/ICONS/creeper.png");
+Label{
+-fx-font-weight: bold;
+-fx-text-fill : white;
 }

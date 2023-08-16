@@ -1,0 +1,11 @@
+#btnClose{
+-fx-background-color : lightskyblue;
+}
+.root{
+-fx-background-image : url("/ICONS/ds.jpg");
+-fx-background-size : cover
+}
+Label{
+-fx-font-weight: bold;
+-fx-text-fill : white;
+}
