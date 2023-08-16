@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Computer;
 import ba.unsa.etf.rpr.domain.Game;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -49,51 +50,61 @@ public class CheckController {
      * @param actionEvent the action event
      */
     public void onActionSubmit(ActionEvent actionEvent) {
+        boolean unesene = true;
+        if(fldRam.getText().equals("") || fldHdd.getText().equals("")){
+            fldRam.setText("0");
+            fldHdd.setText("0");
+        }
+        if(fldRam.getText().equals("0") || fldHdd.getText().equals("") || fldCpu.getText().equals("") || fldGpu.getText().equals("")) unesene = false;
         Computer computer = new Computer();
         computer.setCPU(fldCpu.getText());
         computer.setGPU(fldGpu.getText());
         computer.setRAM(Integer.parseInt(fldRam.getText()));
         computer.setMemory(Integer.parseInt(fldHdd.getText()));
-        computer.setGameID(2);
+        ArrayList<Computer> allComps = new ArrayList<>(DaoFactory.computerDao().getAll());
+        computer.setId(allComps.size() + 1);
         ArrayList<Computer> listOfComputers = new ArrayList<>(DaoFactory.computerDao().searchByComputerSpecification(computer));
-        if(listOfComputers.size() == 0) {
-            computer.setId(DaoFactory.computerDao().getAll().size()+1);
-        }else {
-            System.out.println("Nema nista");
-        }
-
-        ArrayList<Game> games = new ArrayList<>(DaoFactory.gameDao().getAll());
-        ArrayList<Game> compatibleGames = new ArrayList<>();
-        boolean printed = false;
-        for(int i = 0; i < games.size(); i++){
-            if(computer.getCPU().toLowerCase().equals(games.get(i).getRequiredCPU().toLowerCase()) && computer.getRAM() >= games.get(i).getRequiredRAM() && computer.getGPU().toLowerCase().equals(games.get(i).getRequiredGPU().toLowerCase()) && computer.getMemory() >= games.get(i).getRequiredMemory())
-            {
-                compatibleGames.add(games.get(i));
-                printed = true;
-
-            }
-            else if(i == games.size()-1 && printed==false) {
+        if (listOfComputers.size() == 0) {
+            computer.setId(DaoFactory.computerDao().getAll().size() + 1);
+            if (unesene == false) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
-                alert.setTitle("NO GAMES FOUND");
+                alert.setTitle("NO SPECS");
                 alert.setHeaderText("Warning!");
-                alert.setContentText("No games were found for your specifications");
+                alert.setContentText("You must enter your pc specifications in order to see the games it can run!");
                 alert.showAndWait();
             }
-        }
-        if(printed == true){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
-            alert.setTitle("Compatible games");
-            alert.setHeaderText("We found the games your pc can run");
-            alert.setContentText("Games your pc can run are:");
-            String ispis = "";
-            for(int i = 0; i<compatibleGames.size();i++){
-                ispis += compatibleGames.get(i).getGameTitle()+ " \n";
+            ArrayList<Game> games = new ArrayList<>(DaoFactory.gameDao().getAll());
+            ArrayList<Game> compatibleGames = new ArrayList<>();
+            boolean printed = false;
+            for (int i = 0; i < games.size(); i++) {
+                if (computer.getCPU().toLowerCase().equals(games.get(i).getRequiredCPU().toLowerCase()) && computer.getRAM() >= games.get(i).getRequiredRAM() && computer.getGPU().toLowerCase().equals(games.get(i).getRequiredGPU().toLowerCase()) && computer.getMemory() >= games.get(i).getRequiredMemory()) {
+                    compatibleGames.add(games.get(i));
+                    printed = true;
 
+                } else if (i == games.size() - 1 && printed == false && unesene == true) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
+                    alert.setTitle("NO GAMES FOUND");
+                    alert.setHeaderText("Warning!");
+                    alert.setContentText("No games were found for your specifications");
+                    alert.showAndWait();
+                }
             }
-            alert.setContentText(ispis);
-            alert.showAndWait();
+            if (printed == true) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
+                alert.setTitle("Compatible games");
+                alert.setHeaderText("We found the games your pc can run");
+                alert.setContentText("Games your pc can run are:");
+                String ispis = "";
+                for (int i = 0; i < compatibleGames.size(); i++) {
+                    ispis += compatibleGames.get(i).getGameTitle() + " \n";
+
+                }
+                alert.setContentText(ispis);
+                alert.showAndWait();
+            }
         }
     }
 

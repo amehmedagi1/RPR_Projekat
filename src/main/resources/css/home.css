@@ -1,6 +1,10 @@
-Button{
+.button{
 -fx-background-color : lightskyblue;
 }
+.button:hover{
+-fx-background-color: lightblue
+}
+
 
 .list-cell { -fx-text-fill: black; }
 .list-cell:odd { -fx-background-color: white;}

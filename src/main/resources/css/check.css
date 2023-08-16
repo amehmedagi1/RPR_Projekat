@@ -1,11 +1,16 @@
-#btnSubmit{
+.button{
 -fx-background-color : lightskyblue;
+}
+.button:hover{
+-fx-background-color: lightblue
 }
 .root{
 -fx-background-image : url("/ICONS/mario.jpg");
 -fx-background-size : cover
 }
-Label{
+.label{
 -fx-font-weight: bold;
 -fx-text-fill : white;
 }
+.text-field:hover{-fx-background-color: lightblue}
+.text-field:focused{-fx-background-color: lightblue}

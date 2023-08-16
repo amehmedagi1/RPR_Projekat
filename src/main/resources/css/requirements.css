@@ -1,11 +1,14 @@
-#btnClose{
+.button{
 -fx-background-color : lightskyblue;
+}
+.button:hover{
+-fx-background-color: lightblue
 }
 .root{
 -fx-background-image : url("/ICONS/ds.jpg");
 -fx-background-size : cover
 }
-Label{
+.label{
 -fx-font-weight: bold;
 -fx-text-fill : white;
 }
