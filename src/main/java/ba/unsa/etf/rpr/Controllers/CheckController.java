@@ -2,6 +2,8 @@ package ba.unsa.etf.rpr.Controllers;
 
 import ba.unsa.etf.rpr.Business.ComputerManager;
 import ba.unsa.etf.rpr.Business.GameManager;
+import ba.unsa.etf.rpr.dao.ComputerDao;
+import ba.unsa.etf.rpr.dao.Dao;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Computer;
 import ba.unsa.etf.rpr.domain.Game;
@@ -63,11 +65,20 @@ public class CheckController {
         computer.setGPU(fldGpu.getText());
         computer.setRAM(Integer.parseInt(fldRam.getText()));
         computer.setMemory(Integer.parseInt(fldHdd.getText()));
-        ComputerManager manager = new ComputerManager();
+        boolean nadjen = false;
         ArrayList<Computer> allComps = new ArrayList<>(DaoFactory.computerDao().getAll());
-        ArrayList<Computer> listOfComputers = new ArrayList<>(DaoFactory.computerDao().searchByComputerSpecification(computer));
-        if (listOfComputers.size() == 0) {
-            listOfComputers.add(computer);
+        ArrayList<Computer> nova = new ArrayList<>(DaoFactory.computerDao().searchByComputerSpecification(computer));
+        ComputerManager manager = new ComputerManager();
+        for(int i = 0; i < allComps.size(); i++){
+            if(computer.getCPU().toLowerCase().equals(allComps.get(i).getCPU().toLowerCase()) && computer.getGPU().toLowerCase().equals(allComps.get(i).getGPU().toLowerCase()) && computer.getRAM() >= allComps.get(i).getRAM() && computer.getMemory() >= allComps.get(i).getMemory()){
+                System.out.println(computer.toString() + "\n" + allComps.get(i).toString());
+                nadjen = true;
+                break;
+            }
+            else if(i== allComps.size()-1 && nadjen == false){
+                allComps.add(computer);
+                manager.add(computer);
+            }
         }
             if (unesene == false) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -84,6 +95,8 @@ public class CheckController {
                 if (computer.getCPU().toLowerCase().equals(games.get(i).getRequiredCPU().toLowerCase()) && computer.getRAM() >= games.get(i).getRequiredRAM() && computer.getGPU().toLowerCase().equals(games.get(i).getRequiredGPU().toLowerCase()) && computer.getMemory() >= games.get(i).getRequiredMemory()) {
                     compatibleGames.add(games.get(i));
                     printed = true;
+                    computer.setGameID(games.get(i).getId());
+                    allComps.add(computer);
 
                 } else if (i == games.size() - 1 && printed == false && unesene == true) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
