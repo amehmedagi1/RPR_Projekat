@@ -19,7 +19,6 @@ public class ComputerManager {
      * @throws GameException the game excpetion
      */
     public Computer add(Computer computer) throws GameException {
-        System.out.println("proslo drugo");
        return DaoFactory.computerDao().add(computer);
     }
 

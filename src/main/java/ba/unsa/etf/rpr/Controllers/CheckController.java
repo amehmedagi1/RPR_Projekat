@@ -124,18 +124,4 @@ public class CheckController {
             }
     }
 
-    public void openDialog(String title, String fxml, Object controller) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
-            fxmlLoader.setController(controller);
-            Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.setTitle(title);
-            stage.getIcons().add(new Image("/ICONS/creeper.png"));
-            stage.show();
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }
