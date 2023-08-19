@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.AccessibleAction;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -108,6 +107,18 @@ public class HomeController {
         alert.setHeaderText("About app");
         alert.setContentText("Created by: Admir Mehmedagic");
         alert.showAndWait();
+    }
+
+    public void onActionDelete(ActionEvent actionEvent){
+        if(tvGames.getSelectionModel().getSelectedIndex()==-1){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
+            alert.setTitle("WARNING");
+            alert.setHeaderText("Warning!");
+            alert.setContentText("You must select a game which you want to delete!");
+            alert.showAndWait();
+        }
+        tvGames.getItems().remove(tvGames.getSelectionModel().getSelectedItem());
     }
     /**
      * Open dialog.

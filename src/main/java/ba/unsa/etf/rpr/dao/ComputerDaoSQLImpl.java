@@ -67,9 +67,10 @@ public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements Compute
 
     @Override
     public List<Computer> searchByComputerSpecification(Computer computer) {
-        String query = "SELECT * FROM computers WHERE CPU=? && GPU=? && Memory=? && RAM=?";
+        String query = "SELECT * FROM computers WHERE CPU=? AND GPU=? AND Memory=? AND RAM=?";
         return executeQuery(query, new Object[]{computer.getCPU(), computer.getGPU(), computer.getMemory(), computer.getRAM()});
     }
+
 
 
 

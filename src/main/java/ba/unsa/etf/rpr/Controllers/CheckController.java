@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.Controllers;
 
+import ba.unsa.etf.rpr.Business.ComputerManager;
+import ba.unsa.etf.rpr.Business.GameManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Computer;
 import ba.unsa.etf.rpr.domain.Game;
@@ -61,11 +63,12 @@ public class CheckController {
         computer.setGPU(fldGpu.getText());
         computer.setRAM(Integer.parseInt(fldRam.getText()));
         computer.setMemory(Integer.parseInt(fldHdd.getText()));
+        ComputerManager manager = new ComputerManager();
         ArrayList<Computer> allComps = new ArrayList<>(DaoFactory.computerDao().getAll());
-        computer.setId(allComps.size() + 1);
         ArrayList<Computer> listOfComputers = new ArrayList<>(DaoFactory.computerDao().searchByComputerSpecification(computer));
         if (listOfComputers.size() == 0) {
-            computer.setId(DaoFactory.computerDao().getAll().size() + 1);
+            listOfComputers.add(computer);
+        }
             if (unesene == false) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
@@ -89,6 +92,7 @@ public class CheckController {
                     alert.setHeaderText("Warning!");
                     alert.setContentText("No games were found for your specifications");
                     alert.showAndWait();
+                    System.out.println("proslo prvo");
                 }
             }
             if (printed == true) {
@@ -105,7 +109,6 @@ public class CheckController {
                 alert.setContentText(ispis);
                 alert.showAndWait();
             }
-        }
     }
 
     public void openDialog(String title, String fxml, Object controller) {
