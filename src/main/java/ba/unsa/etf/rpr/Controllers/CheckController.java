@@ -71,7 +71,6 @@ public class CheckController {
         ComputerManager manager = new ComputerManager();
         for(int i = 0; i < allComps.size(); i++){
             if(computer.getCPU().toLowerCase().equals(allComps.get(i).getCPU().toLowerCase()) && computer.getGPU().toLowerCase().equals(allComps.get(i).getGPU().toLowerCase()) && computer.getRAM() >= allComps.get(i).getRAM() && computer.getMemory() >= allComps.get(i).getMemory()){
-                System.out.println(computer.toString() + "\n" + allComps.get(i).toString());
                 nadjen = true;
                 break;
             }
@@ -105,7 +104,6 @@ public class CheckController {
                     alert.setHeaderText("Warning!");
                     alert.setContentText("No games were found for your specifications");
                     alert.showAndWait();
-                    System.out.println("proslo prvo");
                 }
             }
             if (printed == true) {

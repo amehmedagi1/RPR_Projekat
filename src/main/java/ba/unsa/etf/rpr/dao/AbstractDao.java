@@ -91,7 +91,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             stmt.setObject(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            //trebalo bi bacati kreirani izuzetak
+           throw new GameException(e.getMessage());
         }
     }
 
@@ -101,30 +101,19 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
         StringBuilder builder = new StringBuilder();
         builder.append("INSERT INTO ").append(tableName);
-        System.out.println("Dodali Insert");
         builder.append(" (").append(columns.getKey()).append(") ");
-        System.out.println("dodali pitanja");
         builder.append("VALUES (").append(columns.getValue()).append(")");
-        System.out.println("Dodali vrijednosti");
 
         try {
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
-            System.out.println("prvi try prosao");
             // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
             for (Map.Entry<String, Object> entry : row.entrySet()) {
                 if (entry.getKey().equals("id")) continue; // skip ID
-                System.out.println("entrySet okej");
-                System.out.println(counter);
                 stmt.setObject(counter, entry.getValue());
-                System.out.println("Postavilo");
                 counter++;
             }
-            System.out.println("izasli iz petlje");
-            System.out.println(builder.toString());
             stmt.executeUpdate();
-            System.out.println("Prosao update");
-
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next(); // we know that there is one key
             item.setId(rs.getInt(1)); //set id to return it back */
@@ -213,7 +202,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
         int counter = 1;
         for (Map.Entry<String, Object> entry: row.entrySet()) {
-            System.out.println(counter);
             counter++;
             if (entry.getKey().equals("id")) continue; //skip insertion of id due autoincrement
             columns.append(entry.getKey());

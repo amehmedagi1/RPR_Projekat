@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.Exceptions.GameException;
 import ba.unsa.etf.rpr.domain.Computer;
 
 import java.sql.*;
@@ -48,8 +49,7 @@ public class ComputerDaoSQLImpl extends AbstractDao<Computer> implements Compute
             //treba još za igrice ovdje
             return computer;
         } catch (SQLException e) {
-            return new Computer();
-            //treba bacati ovdje novokreirani izuzetak
+            throw new GameException(e.getMessage());
         }
     }
 
