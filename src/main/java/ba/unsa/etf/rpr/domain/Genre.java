@@ -9,6 +9,14 @@ public class Genre implements Idable{
     private int id;
     private String genreName;
 
+    public Genre(String genreName){
+        this.genreName = genreName;
+    }
+
+    public Genre(){
+
+    }
+
     public int getId() {
         return id;
     }
