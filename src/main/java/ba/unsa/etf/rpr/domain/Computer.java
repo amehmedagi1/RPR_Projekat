@@ -13,6 +13,16 @@ public class Computer implements Idable{
     private int RAM;
     private int gameID;
 
+    public Computer() {
+    }
+
+    public Computer(String CPU, String GPU, int memory, int RAM, int gameID) {
+        this.CPU = CPU;
+        this.GPU = GPU;
+        this.memory = memory;
+        this.RAM = RAM;
+        this.gameID = gameID;
+    }
 
     public int getId() {
         return id;

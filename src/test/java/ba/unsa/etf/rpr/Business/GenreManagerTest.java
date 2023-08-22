@@ -44,6 +44,10 @@ public class GenreManagerTest {
             e.printStackTrace();
             Assertions.assertTrue(false);
         }
+    }
+
+    @Test
+    void validateGenreNameIncorrect() throws GameException{
         String incorrectNameShort = "A";
         Mockito.doCallRealMethod().when(genreManager).validateGenreName(incorrectNameShort);
         GameException gameException1 = Assertions.assertThrows(GameException.class, ()->{
@@ -55,6 +59,7 @@ public class GenreManagerTest {
         GameException gameException2 = Assertions.assertThrows(GameException.class, ()->{
             genreManager.validateGenreName(incorrectNameLong);}, "Genre must be between 3 and 20 characters long");
         Assertions.assertEquals("Genre must be between 3 and 20 characters long", gameException2.getMessage());
+
     }
 
     @Test

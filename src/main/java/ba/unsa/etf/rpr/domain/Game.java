@@ -21,6 +21,20 @@ public class Game implements Idable{
      *
      * @return the required cpu
      */
+    public Game() {
+
+    }
+
+    public Game(String gameTitle, Date releaseDate, Genre genre, String requiredCPU, String requiredGPU, int requiredMemory, int requiredRAM) {
+        this.gameTitle = gameTitle;
+        this.releaseDate = releaseDate;
+        this.genre = genre;
+        this.requiredCPU = requiredCPU;
+        this.requiredGPU = requiredGPU;
+        this.requiredMemory = requiredMemory;
+        this.requiredRAM = requiredRAM;
+    }
+
     public String getRequiredCPU() {
         return requiredCPU;
     }
