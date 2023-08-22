@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
+/**
+ * The type App fx.
+ */
 public class AppFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {

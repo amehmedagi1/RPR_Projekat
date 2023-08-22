@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.Business;
 import ba.unsa.etf.rpr.Exceptions.GameException;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Genre;
+
 import java.util.List;
 
 /**
@@ -54,6 +55,12 @@ public class GenreManager {
         return DaoFactory.genreDao().getAll();
     }
 
+    /**
+     * Validate genre name.
+     *
+     * @param name the name
+     * @throws GameException the game exception
+     */
     public void validateGenreName(String name) throws GameException{
         if (name == null || name.length() > 45 || name.length() < 3){
             throw new GameException("Genre must be between 3 and 20 characters long");

@@ -13,9 +13,21 @@ public class Computer implements Idable{
     private int RAM;
     private int gameID;
 
+    /**
+     * Instantiates a new Computer.
+     */
     public Computer() {
     }
 
+    /**
+     * Instantiates a new Computer.
+     *
+     * @param CPU    the cpu
+     * @param GPU    the gpu
+     * @param memory the memory
+     * @param RAM    the ram
+     * @param gameID the game id
+     */
     public Computer(String CPU, String GPU, int memory, int RAM, int gameID) {
         this.CPU = CPU;
         this.GPU = GPU;

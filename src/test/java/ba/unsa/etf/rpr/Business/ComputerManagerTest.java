@@ -7,7 +7,6 @@ import ba.unsa.etf.rpr.domain.Computer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
@@ -17,12 +16,18 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 
+/**
+ * The type Computer manager test.
+ */
 public class ComputerManagerTest {
     private ComputerManager computerManager;
     private Computer computer;
     private ComputerDaoSQLImpl computerDaoSQLMock;
     private List<Computer> computers;
 
+    /**
+     * Initialize.
+     */
     @BeforeEach
     public void initialize(){
         computerManager = Mockito.mock(ComputerManager.class);
@@ -40,6 +45,11 @@ public class ComputerManagerTest {
 
     }
 
+    /**
+     * Add.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void add() throws GameException{
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
@@ -54,6 +64,11 @@ public class ComputerManagerTest {
         daoFactoryMockedStatic.close();
     }
 
+    /**
+     * Add to db.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void addToDB() throws GameException{
         computer.setId(0);
@@ -62,6 +77,11 @@ public class ComputerManagerTest {
         Mockito.verify(computerManager).add(computer);
     }
 
+    /**
+     * Validate computer.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void validateComputer() throws GameException{
         Computer correct = new Computer("korektno", "korektno", 100, 8,0);
@@ -74,6 +94,11 @@ public class ComputerManagerTest {
 
     }
 
+    /**
+     * Validate computer incorrect.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void validateComputerIncorrect() throws GameException{
         Computer incorrect1 = new Computer("", "", 0, 0, 0);

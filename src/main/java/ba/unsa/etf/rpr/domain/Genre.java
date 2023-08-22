@@ -9,10 +9,18 @@ public class Genre implements Idable{
     private int id;
     private String genreName;
 
+    /**
+     * Instantiates a new Genre.
+     *
+     * @param genreName the genre name
+     */
     public Genre(String genreName){
         this.genreName = genreName;
     }
 
+    /**
+     * Instantiates a new Genre.
+     */
     public Genre(){
 
     }

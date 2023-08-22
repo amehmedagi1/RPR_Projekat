@@ -16,15 +16,25 @@ public class Game implements Idable{
     private int requiredMemory;
     private int requiredRAM;
 
+
     /**
-     * Gets required cpu.
-     *
-     * @return the required cpu
+     * Instantiates a new Game.
      */
     public Game() {
 
     }
 
+    /**
+     * Instantiates a new Game.
+     *
+     * @param gameTitle      the game title
+     * @param releaseDate    the release date
+     * @param genre          the genre
+     * @param requiredCPU    the required cpu
+     * @param requiredGPU    the required gpu
+     * @param requiredMemory the required memory
+     * @param requiredRAM    the required ram
+     */
     public Game(String gameTitle, Date releaseDate, Genre genre, String requiredCPU, String requiredGPU, int requiredMemory, int requiredRAM) {
         this.gameTitle = gameTitle;
         this.releaseDate = releaseDate;
@@ -35,6 +45,11 @@ public class Game implements Idable{
         this.requiredRAM = requiredRAM;
     }
 
+    /**
+     * Gets required cpu.
+     *
+     * @return the required cpu
+     */
     public String getRequiredCPU() {
         return requiredCPU;
     }
@@ -102,10 +117,16 @@ public class Game implements Idable{
         this.requiredRAM = requiredRAM;
     }
 
+    /**
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param id the id
+     */
     public void setId(int id) {
         this.id = id;
     }

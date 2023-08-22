@@ -8,7 +8,6 @@ import ba.unsa.etf.rpr.domain.Genre;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
@@ -19,12 +18,18 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 
+/**
+ * The type Game manager test.
+ */
 public class GameManagerTest {
     private GameManager gameManager;
     private Game game;
     private GameDaoSQLImpl gameDaoSQLMock;
     private List<Game> games;
 
+    /**
+     * Initialize.
+     */
     @BeforeEach
     public void initialize(){
         gameManager = Mockito.mock(GameManager.class);
@@ -44,6 +49,11 @@ public class GameManagerTest {
         games.addAll(Arrays.asList(new Game("igrica", new Date(2022,1,1),genre,"cpu", "gpu", 100,10),new Game("igrica", new Date(2023,1,1),genre,"cpu1", "gpu1", 100,10)));
     }
 
+    /**
+     * Validate game correct.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void validateGameCorrect() throws GameException{
         game.setId(0);
@@ -55,6 +65,11 @@ public class GameManagerTest {
         }
     }
 
+    /**
+     * Validate game empty.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void validateGameEmpty() throws GameException{
         game.setGameTitle("a");
@@ -64,6 +79,11 @@ public class GameManagerTest {
         Assertions.assertEquals("Game title must be longer than 3 letters", gameException1.getMessage());
     }
 
+    /**
+     * Validate game incorrect specs.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void validateGameIncorrectSpecs() throws GameException{
         game.setRequiredCPU("");
@@ -73,6 +93,11 @@ public class GameManagerTest {
         Assertions.assertEquals("The specifications are incorrect", gameException1.getMessage());
     }
 
+    /**
+     * Add.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void add() throws GameException{
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
@@ -87,6 +112,11 @@ public class GameManagerTest {
         daoFactoryMockedStatic.close();
     }
 
+    /**
+     * Add new game.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void addNewGame() throws GameException{
         game.setId(0);

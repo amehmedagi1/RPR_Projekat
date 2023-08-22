@@ -53,8 +53,9 @@ public class HomeController {
         genres.addAll(DaoFactory.genreDao().getAll());
     }
 
+
     /**
-     * Initialize.
+     * initialize
      */
     @FXML
     public void initialize() {
@@ -95,11 +96,21 @@ public class HomeController {
 
     }
 
+    /**
+     * On action close.
+     *
+     * @param actionEvent the action event
+     */
     public void onActionClose(ActionEvent actionEvent){
         Stage s = (Stage) lvGenres.getScene().getWindow();
         s.close();
     }
 
+    /**
+     * On action about.
+     *
+     * @param actionEvent the action event
+     */
     public void onActionAbout(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image("/ICONS/creeper.png"));
@@ -109,6 +120,11 @@ public class HomeController {
         alert.showAndWait();
     }
 
+    /**
+     * On action delete.
+     *
+     * @param actionEvent the action event
+     */
     public void onActionDelete(ActionEvent actionEvent){
         if(tvGames.getSelectionModel().getSelectedIndex()==-1){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -120,6 +136,7 @@ public class HomeController {
         }
         tvGames.getItems().remove(tvGames.getSelectionModel().getSelectedItem());
     }
+
     /**
      * Open dialog.
      *

@@ -1,6 +1,5 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.dao.ComputerDaoSQLImpl;
 import ba.unsa.etf.rpr.dao.GameDao;
 import ba.unsa.etf.rpr.dao.GameDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Game;
@@ -9,16 +8,20 @@ import java.util.ArrayList;
 
 /**
  * Hello world!
- *
  */
-public class App 
+public class App
 {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main( String[] args )
     {
         //Test da li radi konekcija sa bazom
         GameDao dao = new GameDaoSQLImpl();
         //list of games
-        ArrayList<Game> games= new ArrayList<Game>();
+        ArrayList<Game> games= new ArrayList<>();
         //adding games from database to list
         for(int i = 0; i<3; i++){
             games.add(dao.getById(i+1));

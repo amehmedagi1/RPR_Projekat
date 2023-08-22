@@ -17,12 +17,18 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 
+/**
+ * The type Genre manager test.
+ */
 public class GenreManagerTest {
     private GenreManager genreManager;
     private Genre genre;
     private GenreDaoSQLImpl genreDaoSQLMock;
     private List<Genre> genres;
 
+    /**
+     * Initialize objects we need.
+     */
     @BeforeEach
     public void initializeObjectsWeNeed(){
         genreManager = Mockito.mock(GenreManager.class);
@@ -35,6 +41,11 @@ public class GenreManagerTest {
         genres.addAll(Arrays.asList(new Genre("MILSIM"), new Genre("Simulator"), new Genre("Sportske")));
     }
 
+    /**
+     * Validate genre name.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void validateGenreName() throws GameException{
         String correctName = "MILSIM";
@@ -46,6 +57,11 @@ public class GenreManagerTest {
         }
     }
 
+    /**
+     * Validate genre name incorrect.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void validateGenreNameIncorrect() throws GameException{
         String incorrectNameShort = "A";
@@ -62,6 +78,11 @@ public class GenreManagerTest {
 
     }
 
+    /**
+     * Add.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void add() throws GameException{
         MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
@@ -76,6 +97,11 @@ public class GenreManagerTest {
         daoFactoryMockedStatic.close();
     }
 
+    /**
+     * Add new genre.
+     *
+     * @throws GameException the game exception
+     */
     @Test
     void addNewGenre() throws GameException{
         Genre newGenre = new Genre("Novi zanr");
